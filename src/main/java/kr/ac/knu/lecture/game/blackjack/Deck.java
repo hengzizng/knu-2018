@@ -45,4 +45,8 @@ public class Deck {
         return cardList.remove(0);
     }
 
+    public void addNextCard(int rank) {
+        Card card = new Card(rank, Suit.CLUBS);
+        cardList.add(0, card);
+    }
 }
