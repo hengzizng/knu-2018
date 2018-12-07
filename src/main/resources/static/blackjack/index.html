@@ -405,6 +405,16 @@
 </style>
 </head>
 <body>
+
+<div style="position: fixed; top: 0; left: 0;
+height: 100px; width: 100%; background-color: #EEFFEE; opacity: 0.7;">
+    <div id="nextCards">
+    </div>
+</div>
+
+<div style="height: 100px; width: 100%">
+</div>
+
 <div>
     <div class="buttons"><div class="btn" id="logout_button">logout</div></div>
 </div>
@@ -554,6 +564,11 @@
             $('#hit').show();
             $('#stand').show();
         }
+
+        $('#nextCards').html("");
+        gameroom.deck.cardList.forEach(function(card) {
+            $('#nextCards').append(card.rank);
+        })
 
         $('.dealer-cards').html("");
         gameRoom.dealer.hand.cardList.forEach(function(card) {
