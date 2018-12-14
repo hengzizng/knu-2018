@@ -1,6 +1,7 @@
 package kr.ac.knu.lecture.game.blackjack;
 
 import kr.ac.knu.lecture.exception.NotEnoughBalanceException;
+import kr.ac.knu.lecture.service.BlackjackService;
 import lombok.Getter;
 
 /**
@@ -64,5 +65,4 @@ public class Player {
     public void stand() {
         this.isPlaying = false;
     }
-
 }

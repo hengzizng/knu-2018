@@ -15,9 +15,14 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+    public String getName() {
+        return name;
+    }
+
     @Id
     private String name;
     private OAuthProvider oAuthProvider;
     private String oAuthProviderId;
     private long account;
+
 }
