@@ -497,6 +497,7 @@ height: 100px; width: 100%; background-color: #EEFFEE; opacity: 0.7;">
             $('#game').show();
             gameRoomId = data.roomId;
             drawGameRoom(data);
+            $('#more').trigger("click");
         });
     })
 
@@ -543,15 +544,19 @@ height: 100px; width: 100%; background-color: #EEFFEE; opacity: 0.7;">
             url: '/api/black-jack/rooms/' + gameRoomId + '/stand',
         }).done(function (data) {
             drawGameRoom(data);
+            $('#more').trigger("click");
         });
     })
 
     $('#more').click(function () {
-        var bet = 100;
+        var bet = 1000;
         var currentBet = parseInt($('#bet').html());
         var money = parseInt($('#money').html());
         if (money < bet) {
             bet = money;
+        }
+        if ( (currentBet+bet) > 10000 ) {
+            bet = 0;
         }
 
         $('#bet').html(currentBet + bet);
@@ -559,7 +564,7 @@ height: 100px; width: 100%; background-color: #EEFFEE; opacity: 0.7;">
     });
 
     $('#less').click(function () {
-        var bet = 100;
+        var bet = 1000;
         var currentBet = parseInt($('#bet').html());
         var money = parseInt($('#money').html());
         if (currentBet < bet) {
