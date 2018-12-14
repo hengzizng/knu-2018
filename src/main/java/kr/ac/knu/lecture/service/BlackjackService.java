@@ -78,7 +78,7 @@ public class BlackjackService {
     }
 
     private void updateGameResult(GameRoom gameRoom, String name) {
-        if(gameRoom.getPlayerList().get(name).handSum() > 21){
+        if(gameRoom.getPlayerList().get(name).getHand().getCardSum() > 21){
             gameRoom.setFinished(true);
         }
 

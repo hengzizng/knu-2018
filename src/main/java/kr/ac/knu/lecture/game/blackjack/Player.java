@@ -65,9 +65,4 @@ public class Player {
     public void stand() {
         this.isPlaying = false;
     }
-
-    public int handSum(){
-        return this.hand.getSum();
-    }
-
 }
