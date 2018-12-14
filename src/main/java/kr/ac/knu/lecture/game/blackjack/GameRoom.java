@@ -14,6 +14,9 @@ public class GameRoom {
     private final String roomId;
     @Getter
     private final Dealer dealer;
+
+
+
     @Getter
     private final Map<String, Player> playerList;
     @Getter
@@ -60,7 +63,6 @@ public class GameRoom {
 
     public Card hit(String name) {
         Player player = playerList.get(name);
-
         return player.hitCard();
     }
 
@@ -76,4 +78,11 @@ public class GameRoom {
         this.isFinished = true;
     }
 
+    public Map<String, Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
 }

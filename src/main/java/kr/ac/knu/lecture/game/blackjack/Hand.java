@@ -1,5 +1,6 @@
 package kr.ac.knu.lecture.game.blackjack;
 
+import kr.ac.knu.lecture.service.BlackjackService;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -35,5 +36,13 @@ public class Hand {
 
     public void reset() {
         cardList.clear();
+    }
+
+    public int getSum(){
+        int sum=0;
+        for(int i=0; i<cardList.size(); ++i){
+            sum += cardList.get(i).getRank();
+        }
+        return sum;
     }
 }

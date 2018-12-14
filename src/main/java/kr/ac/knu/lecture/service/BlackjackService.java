@@ -4,6 +4,7 @@ import kr.ac.knu.lecture.domain.User;
 import kr.ac.knu.lecture.game.blackjack.Deck;
 import kr.ac.knu.lecture.game.blackjack.Evaluator;
 import kr.ac.knu.lecture.game.blackjack.GameRoom;
+import kr.ac.knu.lecture.game.blackjack.Player;
 import kr.ac.knu.lecture.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class BlackjackService {
     private final UserRepository userRepository;
     private final int DECK_NUMBER = 1;
     private final Map<String, GameRoom> gameRoomMap = new HashMap<>();
+
 
     public GameRoom createGameRoom(User user) {
         Deck deck = new Deck(DECK_NUMBER);
@@ -61,7 +63,7 @@ public class BlackjackService {
 
         gameRoom.hit(user.getName());
 
-        updateGameResult(gameRoom);
+        updateGameResult(gameRoom, user.getName());
         return gameRoom;
     }
 
@@ -71,11 +73,15 @@ public class BlackjackService {
         gameRoom.stand(user.getName());
         gameRoom.playDealer();
 
-        updateGameResult(gameRoom);
+        updateGameResult(gameRoom, user.getName());
         return gameRoom;
     }
 
-    private void updateGameResult(GameRoom gameRoom) {
+    private void updateGameResult(GameRoom gameRoom, String name) {
+        if(gameRoom.getPlayerList().get(name).handSum() > 21){
+            gameRoom.setFinished(true);
+        }
+
         if (gameRoom.isFinished()) {
             gameRoom.getPlayerList().forEach((loginId, player) -> {
                 User playUser = userRepository.findById(loginId).orElseThrow(() -> new RuntimeException());
