@@ -85,4 +85,12 @@ public class GameRoom {
     public void setFinished(boolean finished) {
         isFinished = finished;
     }
+
+    public int getDeckCardListSize(){
+        return deck.getcardListSize();
+    }
+
+    public void addDeck(){
+        deck.addCardToDeck();
+    }
 }

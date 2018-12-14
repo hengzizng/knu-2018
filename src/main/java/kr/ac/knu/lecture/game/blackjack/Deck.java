@@ -49,4 +49,14 @@ public class Deck {
         Card card = new Card(rank, Suit.CLUBS);
         cardList.add(0, card);
     }
+
+    public int getcardListSize(){
+        return cardList.size();
+    }
+
+    public void addCardToDeck(){
+        createCards(1);
+        Collections.shuffle(cardList);
+    }
+
 }

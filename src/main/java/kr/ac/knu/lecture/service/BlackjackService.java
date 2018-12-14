@@ -88,6 +88,9 @@ public class BlackjackService {
                 playUser.setAccount(player.getBalance());
 
                 userRepository.save(playUser);
+                if(gameRoom.getDeckCardListSize() < 10){
+                    gameRoom.addDeck();
+                }
             });
         }
     }
